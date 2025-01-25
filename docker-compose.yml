@@ -1,0 +1,44 @@
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf  # Nginx 配置檔案
+      - ./app:/var/www/html                         # 網站代碼
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - webserver
+
+  php:
+    image: php:8.2-fpm
+    container_name: php
+    volumes:
+      - ./app:/var/www/html                         # 網站代碼
+    networks:
+      - webserver
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "3306:3306"                                 # 映射 MySQL 
+    environment:
+      MYSQL_ROOT_PASSWORD: Kazory@8688              # MySQL root 密碼
+      MYSQL_DATABASE:  mydb                         # 預設資料庫名稱
+      MYSQL_USER: admin                             # MySQL 用戶名
+      MYSQL_PASSWORD: admin123                      # MySQL 用戶密碼
+    volumes:
+      - db_data:/var/lib/mysql                      # 持久化資料庫數據
+    networks:
+      - webserver
+
+volumes:
+  db_data:
+
+networks:
+  webserver:
+
