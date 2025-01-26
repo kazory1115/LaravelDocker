@@ -6,7 +6,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf  # Nginx 配置檔案
-      - ./app:/var/www/html                         # 網站代碼
+      - ./app:/var/www/html                          # 網站代碼
     depends_on:
       - php
       - mysql
@@ -14,7 +14,7 @@ services:
       - webserver
 
   php:
-    image: php:8.2-fpm
+    build: .
     container_name: php
     volumes:
       - ./app:/var/www/html                         # 網站代碼
