@@ -4,6 +4,7 @@ services:
     container_name: nginx
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf  # Nginx 配置檔案
       - ./app:/var/www/html                          # 網站代碼
