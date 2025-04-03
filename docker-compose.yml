@@ -28,7 +28,7 @@ services:
     ports:
       - "3306:3306"                                 # 映射 MySQL 
     environment:
-      MYSQL_ROOT_PASSWORD: Kazory@8688              # MySQL root 密碼
+      MYSQL_ROOT_PASSWORD: 1234                     # MySQL root 密碼
       MYSQL_DATABASE:  mydb                         # 預設資料庫名稱
       MYSQL_USER: admin                             # MySQL 用戶名
       MYSQL_PASSWORD: admin123                      # MySQL 用戶密碼
