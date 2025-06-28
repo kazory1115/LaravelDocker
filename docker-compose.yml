@@ -32,6 +32,7 @@ services:
       MYSQL_DATABASE:  mydb                         # 預設資料庫名稱
       MYSQL_USER: admin                             # MySQL 用戶名
       MYSQL_PASSWORD: admin123                      # MySQL 用戶密碼
+      # TZ: Asia/Taipei
     volumes:
       - db_data:/var/lib/mysql                      # 持久化資料庫數據
     networks:
